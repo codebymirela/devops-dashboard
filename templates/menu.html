@@ -1,0 +1,93 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+    <meta charset="UTF-8">
+    <title>Menu Principal </title>
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
+    <style>
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: #fff0f5; 
+            color: #4b0082; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 40px; 
+            margin: 0; 
+        }
+        
+        h1 { color: #db7093; margin-bottom: 20px; font-weight: bold; }
+        .menu-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; 
+            width: 100%; 
+            max-width: 850px; 
+            margin-top: 30px; 
+        }
+        .menu-card, .menu-card:visited, .menu-card:active { 
+            background: white; 
+            height: 180px; 
+            padding: 20px; 
+            border-radius: 20px; 
+            border: 2px solid #ffb6c1; 
+            text-align: center; 
+            text-decoration: none; 
+            color: #db7093; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            box-sizing: border-box; 
+        }
+        .menu-card:hover { 
+            transform: translateY(-5px); 
+            border-color: #ff69b4; 
+            color: #ff69b4; 
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3); 
+        }
+        .icon { 
+            font-size: 2.8em; 
+            margin-bottom: 15px; 
+            color: #ffb6c1; 
+            transition: 0.3s; 
+        }
+        .menu-card:hover .icon { 
+            color: #ff69b4; 
+        }
+        .logout-btn { 
+            margin-top: 50px; 
+            color: #888; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.9em; 
+            transition: 0.3s; 
+        }
+        
+        .logout-btn:hover { color: #db7093; }
+    </style>
+    </head>
+    <body>
+    <h1>Bem-vinda, Mirela! ✨</h1>
+    <div class="menu-container">
+        <a href="/status" class="menu-card">
+            <i class="hgi hgi-stroke hgi-health icon"></i>
+            <span>Saúde do Sistema</span>
+        </a>
+        
+        <a href="#" class="menu-card" style="opacity: 0.6; cursor: not-allowed;">
+            <i class="hgi hgi-stroke hgi-cloud icon"></i>
+            <span>AWS Manager</span>
+        </a>
+        
+        <a href="#" class="menu-card" style="opacity: 0.6; cursor: not-allowed;">
+            <i class="hgi hgi-stroke hgi-robotic icon"></i>
+            <span>Automações</span>
+        </a>
+    </div>
+    <a href="/logout" class="logout-btn">Sair</a>
+</body>
+</html>

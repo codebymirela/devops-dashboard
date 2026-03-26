@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fff0f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4); border: 2px solid #ffb6c1; text-align: center; width: 320px; }
+        h2 { color: #db7093; margin-bottom: 30px; font-weight: bold; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ffc0cb; border-radius: 10px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: #ff69b4; box-shadow: 0 0 8px #ffb6c1; }
+        button { width: 100%; padding: 14px; background-color: #ff69b4; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1em; }
+        button:hover { background-color: #db7093; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Acesso</h2>
+        <form method="post">
+            <input type="text" name="lg" placeholder="Usuário" required>
+            <input type="password" name="se" placeholder="Senha" required>
+            <button type="submit">Entrar no Sistema</button>
+        </form>
+    </div>
+</body>
+</html>
