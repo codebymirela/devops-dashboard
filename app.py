@@ -1,6 +1,7 @@
 from flask import Flask, render_template, session, redirect, url_for, request
 import psutil
 import platform
+import boto3
 
 app = Flask(__name__)
 app.secret_key = 'chave_segura_mirela' 
@@ -32,6 +33,34 @@ def status():
         "discos": psutil.disk_usage('/').percent
     }
     return render_template('status.html', dados=info)
+
+@app.route('/aws')
+def aws_manager():
+    if not session.get('Logado'):
+        return redirect(url_for('login'))
+
+    try:
+        ec2 = boto3.resource('ec2', region_name='us-east-1') 
+        instancias_reais = []
+
+        for instance in ec2.instances.all():
+            name = "Sem Nome"
+            if instance.tags:
+                for tag in instance.tags:
+                    if tag['Key'] == 'Name':
+                        name = tag['Value']
+
+            instancias_reais.append({
+                "name": name,
+                "id": instance.id,
+                "type": instance.instance_type,
+                "state": instance.state['Name'],
+                "ip": instance.public_ip_address if instance.public_ip_address else "N/A"
+            })
+        return render_template('aws.html', instancias=instancias_reais)
+    except Exception as e:
+        print(f"Erro AWS: {e}")
+        return render_template('aws.html', instancias=[], erro=True)
 
 @app.route('/logout')
 def logout():
