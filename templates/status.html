@@ -1,6 +1,6 @@
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
     <meta charset="UTF-8">
     <title>Status do Sistema</title>
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css">
@@ -12,32 +12,22 @@
         .label-group { display: flex; justify-content: space-between; font-weight: bold; color: #4b0082; }
         .bar-container { background: #eee; border-radius: 10px; height: 16px; margin-top: 10px; overflow: hidden; }
         .bar-fill { background: linear-gradient(90deg, #ffb6c1, #ff69b4); height: 100%; transition: width 1s ease; width: var(--porcentagem); }
-        .info-text { text-align: center; color: #888; font-size: 0.85em; margin-top: 25px; padding-top: 15px; border-top: 1px solid #fff0f5; }
+        .info-text { text-align: center; color: #888; font-size: 0.85em; margin-top: 25px; border-top: 1px solid #fff0f5; padding-top: 15px; }
         .back-link { display: block; text-align: center; margin-top: 25px; color: #ff69b4; text-decoration: none; font-weight: bold; }
-        .back-link:hover { color: #db7093; text-decoration: underline; }
     </style>
-    </head>
-    <body>
+</head>
+<body>
     <div class="container">
         <h2><i class="hgi hgi-stroke hgi-health"></i> Monitoramento em Tempo Real</h2>
-        
+        {% for label, valor in [('CPU', dados.cpu), ('RAM', dados.memoria), ('Disco', dados.discos)] %}
         <div class="metric-box">
-            <div class="label-group"><span>CPU</span><span>{{ dados.cpu }}%</span></div>
-            <div class="bar-container"><div class="bar-fill" style="--porcentagem: {{ dados.cpu }}%;"></div></div>
+            <div class="label-group"><span>{{ label }}</span><span>{{ valor }}%</span></div>
+            <div class="bar-container"><div class="bar-fill" style="--porcentagem: {{ valor }}%;"></div></div>
         </div>
-        <div class="metric-box">
-            <div class="label-group"><span>RAM</span><span>{{ dados.memoria }}%</span></div>
-            <div class="bar-container"><div class="bar-fill" style="--porcentagem: {{ dados.memoria }}%;"></div></div>
-        </div>
-        <div class="metric-box">
-            <div class="label-group"><span>Disco</span><span>{{ dados.discos }}%</span></div>
-            <div class="bar-container"><div class="bar-fill" style="--porcentagem: {{ dados.discos }}%;"></div></div>
-        </div>
+        {% endfor %}
         <div class="info-text">Sistema: {{ dados.so }} {{ dados.versao }}</div>
         <a href="/menu" class="back-link">← Voltar ao Menu</a>
     </div>
-    <script>
-        setTimeout(() => { location.reload(); }, 3000);
-    </script>
-    </body>
-    </html>
+    <script>setTimeout(() => { location.reload(); }, 3000);</script>
+</body>
+</html>
